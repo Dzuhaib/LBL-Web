@@ -52,7 +52,7 @@ export default function Services() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-[#01A0E2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-2 px-5 py-3 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-[#1A1A1A] shadow-lg">
+                      <span className="inline-flex items-center gap-2 px-5 py-3 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-[#1A1A1A] shadow-[0_8px_18px_rgba(1,160,226,0.18)]">
                         Learn More
                         <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -80,7 +80,7 @@ export default function Services() {
             </p>
             <Link
               href="https://lblaestheticsuk.book.app/"
-              className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-lg"
+              className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
             >
               Book Your Consultation
             </Link>

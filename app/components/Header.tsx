@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, Sparkles, Droplets, Scissors, Radio, Minus, ArrowUp, Syringe, ChevronDown } from 'lucide-react';
+import { Zap, Sparkles, Droplets, Scissors, Radio, Minus, ArrowUp, Syringe, ChevronDown, X } from 'lucide-react';
 
 const laserClinicSubPages = [
   { title: 'Laser Tattoo Removal', href: '/services/laser-clinics/laser-tattoo-removal', icon: Zap },
@@ -166,10 +166,18 @@ export default function Header() {
       </div>
 
       <div
-        className={`mobile-menu fixed inset-y-0 right-0 w-80 max-w-[calc(100vw-2rem)] overflow-y-auto overscroll-contain bg-white shadow-2xl z-50 pt-24 px-8 pb-8 ${
+        className={`mobile-menu fixed inset-0 w-full max-w-none overflow-y-auto overscroll-contain bg-white shadow-2xl z-50 pt-20 px-6 pb-8 md:hidden ${
           mobileOpen ? 'open' : ''
         }`}
       >
+        <button
+          type="button"
+          onClick={() => setMobileOpen(false)}
+          className="absolute top-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#F0EDE8] text-[#1A1A1A] transition-colors hover:bg-[#01A0E2] hover:text-white focus-visible:outline-none"
+          aria-label="Close menu"
+        >
+          <X className="h-5 w-5" />
+        </button>
         <nav className="flex flex-col gap-5" aria-label="Mobile navigation">
           {navLinksBeforeServices.map((link) => (
             <Link

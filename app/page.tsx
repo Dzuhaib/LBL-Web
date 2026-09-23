@@ -38,9 +38,9 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="reveal" data-reveal-id="hero-text">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 rounded-full mb-6">
-                  <span className="w-2 h-2 bg-[#01A0E2] rounded-full badge-pulse" />
-                  <span className="text-xs font-semibold text-[#01A0E2] uppercase tracking-wider">
+                <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#01A0E2]/20 bg-white/75 px-3.5 py-2 shadow-[0_4px_14px_rgba(26,26,26,0.06)] backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#01A0E2] ring-4 ring-[#01A0E2]/10 badge-pulse" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3D3D3D]">
                     September Deals Live
                   </span>
                 </div>
@@ -57,7 +57,7 @@ export default function Home() {
                 </div>
                 <Link
                   href="https://lblaestheticsuk.book.app/"
-                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-lg text-base"
+                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)] text-base"
                 >
                   Book your consultation
                 </Link>
@@ -69,7 +69,7 @@ export default function Home() {
                     alt="LBL Aesthetics clinic — advanced medical aesthetic treatments in Essex"
                     width={700}
                     height={900}
-                    className="w-full h-auto rounded-3xl shadow-xl object-cover"
+                    className="w-full h-auto rounded-3xl shadow-[0_12px_30px_rgba(26,26,26,0.10)] object-cover"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Home() {
                 'Using advanced techniques and high-quality products, we focus on enhancing your natural beauty with subtle, refined results.',
                 'Your safety, satisfaction, and overall experience remain our top priorities at every step.',
               ].map((line, i) => (
-                <div key={i} className="p-5 bg-white rounded-2xl shadow-sm reveal-delay-3" data-reveal-id={`team-line-${i}`}>
+                <div key={i} className="p-5 bg-white rounded-2xl shadow-[0_4px_14px_rgba(26,26,26,0.06)] reveal-delay-3" data-reveal-id={`team-line-${i}`}>
                   <p className="text-[#3D3D3D] leading-relaxed text-sm md:text-base">{line}</p>
                 </div>
               ))}
@@ -117,18 +117,18 @@ export default function Home() {
                 { name: 'Star Rose', role: 'Advanced Laser Technician', src: '/images/team-4.avif' },
                 { name: 'Jodie Betty', role: 'Endo Fibre Lift & Advanced Injectables Specialist', src: '/images/team-1.avif' },
               ].map((member, i) => (
-                <div key={member.name} className="team-card reveal-delay-4" data-reveal-id={`team-card-${i}`}>
-                  <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
+                <div key={member.name} className="team-card reveal-delay-4 h-full aspect-[4/5]" data-reveal-id={`team-card-${i}`}>
+                  <div className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_14px_rgba(26,26,26,0.06)]">
                     <img
                       src={member.src}
                       alt={`${member.name} — ${member.role}`}
                       width={400}
                       height={500}
-                      className="w-full aspect-[4/5] object-cover"
+                      className="min-h-0 w-full flex-1 object-cover"
                     />
-                    <div className="p-5">
+                    <div className="flex min-h-[112px] flex-col justify-center p-4 sm:min-h-[128px] sm:p-5">
                       <h3 className="font-heading font-semibold text-lg text-[#1A1A1A]">{member.name}</h3>
-                      <p className="text-sm text-[#6B6B6B] mt-1">{member.role}</p>
+                      <p className="mt-1 text-xs leading-snug text-[#6B6B6B] sm:text-sm">{member.role}</p>
                     </div>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function Home() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-[#01A0E2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-2 px-5 py-3 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-[#1A1A1A] shadow-lg">
+                      <span className="inline-flex items-center gap-2 px-5 py-3 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-[#1A1A1A] shadow-[0_8px_18px_rgba(1,160,226,0.18)]">
                         Learn More
                         <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -189,7 +189,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className="reveal" data-reveal-id="academy-image">
-                <div className="rounded-3xl overflow-hidden shadow-xl">
+                <div className="rounded-3xl overflow-hidden shadow-[0_12px_30px_rgba(26,26,26,0.10)]">
                   <img
                     src="/images/academy.avif"
                     alt="LBL Aesthetics training academy — CPD-accredited aesthetic courses"
@@ -217,7 +217,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="https://lblaestheticsuk.book.app/"
-                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-lg"
+                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
                 >
                   Book your consultation
                 </Link>
@@ -275,13 +275,13 @@ export default function Home() {
                 </p>
                 <Link
                   href="https://lblaestheticsuk.book.app/"
-                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-lg"
+                  className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
                 >
                   Book your consultation
                 </Link>
               </div>
               <div className="reveal" data-reveal-id="why-image">
-                <div className="rounded-3xl overflow-hidden shadow-xl">
+                <div className="rounded-3xl overflow-hidden shadow-[0_12px_30px_rgba(26,26,26,0.10)]">
                   <img
                     src="/images/why-choose.avif"
                     alt="LBL Aesthetics clinic — advanced medical aesthetic treatments"
@@ -400,7 +400,7 @@ export default function Home() {
               ].map((faq, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl shadow-sm overflow-hidden reveal-delay-2"
+                  className="bg-white rounded-2xl shadow-[0_4px_14px_rgba(26,26,26,0.06)] overflow-hidden reveal-delay-2"
                   data-reveal-id={`faq-item-${i}`}
                 >
                   <button

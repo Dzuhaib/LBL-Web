@@ -116,12 +116,12 @@ body {
 
 /* Card hover lift */
 .card-lift {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(26, 26, 26, 0.08);
 }
 
 /* Accent underline */
@@ -191,11 +191,11 @@ html {
 }
 
 .treatment-card img {
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.35s ease;
 }
 
 .treatment-card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 /* What next tile */
@@ -206,11 +206,11 @@ html {
 }
 
 .tile-hover img {
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.35s ease;
 }
 
 .tile-hover:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .tile-hover .tile-overlay {
@@ -225,12 +225,12 @@ html {
 .team-card {
   border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(26, 26, 26, 0.07);
 }
 
 /* Hero section */
