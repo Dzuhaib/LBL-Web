@@ -103,7 +103,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`site-header sticky top-0 left-0 right-0 z-50 ${scrolled ? 'scrolled' : ''}`}>
+      <div className={`site-header sticky top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-2xl backdrop-saturate-150 ${scrolled ? 'scrolled' : ''}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3" aria-label="LBL Aesthetics home">
           <img
