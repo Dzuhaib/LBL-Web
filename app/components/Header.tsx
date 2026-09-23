@@ -166,7 +166,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`mobile-menu fixed inset-y-0 right-0 w-80 bg-white shadow-2xl z-50 pt-24 px-8 ${
+        className={`mobile-menu fixed inset-y-0 right-0 w-80 max-w-[calc(100vw-2rem)] overflow-y-auto overscroll-contain bg-white shadow-2xl z-50 pt-24 px-8 pb-8 ${
           mobileOpen ? 'open' : ''
         }`}
       >
