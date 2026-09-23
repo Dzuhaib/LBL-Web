@@ -37,7 +37,7 @@ export default function Home() {
         <section id="hero" className="min-h-screen flex items-center pt-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="reveal" data-reveal-id="hero-text">
+              <div className="reveal order-2 lg:order-1" data-reveal-id="hero-text">
                 <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#01A0E2]/20 bg-white/75 px-3.5 py-2 shadow-[0_4px_14px_rgba(26,26,26,0.06)] backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#01A0E2] ring-4 ring-[#01A0E2]/10 badge-pulse" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3D3D3D]">
@@ -62,7 +62,7 @@ export default function Home() {
                   Book your consultation
                 </Link>
               </div>
-              <div className="reveal-delay-2" data-reveal-id="hero-image">
+              <div className="reveal-delay-2 order-1 lg:order-2" data-reveal-id="hero-image">
                 <div className="hero-image-wrapper relative">
                   <img
                     src="/images/hero.avif"
