@@ -39,6 +39,7 @@ export default function Header() {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [academyMenuOpen, setAcademyMenuOpen] = useState(false);
   const [academyMobileOpen, setAcademyMobileOpen] = useState(false);
+  const [servicesMobileOpen, setServicesMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -311,23 +312,32 @@ className="mega-menu-dropdown w-[720px]"
             )}
           </div>
           <div className="border-t border-[#E8E4DE] pt-4 mt-2">
-            <Link
-              href="/services"
-              onClick={() => setMobileOpen(false)}
-              className="text-base font-medium text-[#3D3D3D] hover:text-[#01A0E2] transition-colors block mb-3"
+            <button
+              type="button"
+              onClick={() => setServicesMobileOpen((open) => !open)}
+              className="flex w-full items-center justify-between text-left text-base font-medium text-[#3D3D3D] transition-colors hover:text-[#01A0E2]"
+              aria-expanded={servicesMobileOpen}
             >
-              Services
-            </Link>
-            {laserClinicSubPages.map((page) => (
-              <Link
-                key={page.title}
-                href={page.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-1.5 text-sm text-[#3D3D3D] hover:text-[#01A0E2] transition-colors pl-2"
-              >
-                {page.title}
-              </Link>
-            ))}
+              <span>Services</span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesMobileOpen ? 'rotate-180 text-[#01A0E2]' : ''}`} />
+            </button>
+            {servicesMobileOpen && (
+              <div className="mt-2 space-y-1">
+                {laserClinicSubPages.map((page) => (
+                  <Link
+                    key={page.title}
+                    href={page.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-2 rounded-lg py-2 pl-2 text-xs leading-relaxed text-[#6B6B6B] transition-colors hover:bg-[#01A0E2]/10 hover:text-[#01A0E2]"
+                  >
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#01A0E2]/10 text-[#01A0E2]">
+                      <page.icon className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{page.title}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
           {navLinksAfterServices.map((link) => (
             <Link
