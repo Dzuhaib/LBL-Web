@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, Sparkles, Droplets, Scissors, Radio, Minus, ArrowUp, Syringe, ChevronDown, X } from 'lucide-react';
+import { Zap, Sparkles, Droplets, Scissors, Radio, Minus, ArrowUp, Syringe, ChevronDown, X, Award, GraduationCap, BookOpen, ClipboardCheck, FlaskConical, Microscope, Layers, HeartPulse, BriefcaseMedical, Route, Trophy } from 'lucide-react';
 
 const laserClinicSubPages = [
   { title: 'Laser Tattoo Removal', href: '/services/laser-clinics/laser-tattoo-removal', icon: Zap },
@@ -15,9 +15,30 @@ const laserClinicSubPages = [
   { title: 'Dermal Fillers', href: '/services/laser-clinics/dermal-fillers', icon: Syringe },
 ];
 
+const academyLinks = [
+  { title: 'L2 Award in Makeup Services', icon: Sparkles },
+  { title: 'L3 Aesthetics Pathway Award - Package', icon: Award },
+  { title: 'L3 Certificate in Vocational Assessment', icon: ClipboardCheck },
+  { title: 'L4 Diploma in Aesthetic Treatment & Skin', icon: GraduationCap },
+  { title: 'L4 Award in Laser — Package Deal', icon: Zap },
+  { title: 'L4 Certificate in Education & Training', icon: BookOpen },
+  { title: 'L5 Certificate in Chemical Peel', icon: FlaskConical },
+  { title: 'L5 Certificate in Skin Booster Treatment', icon: Syringe },
+  { title: 'L5 Certificate in Microneedling Treatmen', icon: Microscope },
+  { title: 'L6 Certificate in Chemical Peel', icon: FlaskConical },
+  { title: 'L6 Certificate in Microneedling', icon: Microscope },
+  { title: 'L6 Certificate in Skin Booster', icon: HeartPulse },
+  { title: 'L6 Diploma in Aesthetic Practice', icon: BriefcaseMedical },
+  { title: 'L7 Combined L6–L7 Diploma in Aesthetic P', icon: Layers },
+  { title: 'L7 Full Career Pathway — L3 to L7 Diplom', icon: Route },
+  { title: 'L7 Diploma in Aesthetic Practice', icon: Trophy },
+];
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [academyMenuOpen, setAcademyMenuOpen] = useState(false);
+  const [academyMobileOpen, setAcademyMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -37,7 +58,6 @@ export default function Header() {
 
   const navLinksBeforeServices = [
     { label: 'Home', href: '/' },
-    { label: 'Academy', href: '/copy-of-academy-1' },
   ];
 
   const navLinksAfterServices = [
@@ -49,19 +69,49 @@ export default function Header() {
   ];
 
   return (
-    <header
-      className={`site-header fixed top-0 left-0 right-0 z-50 ${
-        scrolled ? 'scrolled' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="contents">
+      <div className="hidden border-b border-white/20 bg-[#01A0E2] text-white md:block">
+        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-6 text-xs">
+          <div className="flex items-center gap-5">
+            <a href="tel:07904284115" className="transition-colors hover:text-[#66D1F2]">
+              Call Us: 07904284115
+            </a>
+            <a href="mailto:lblaesthetics-uk@outlook.com" className="transition-colors hover:text-[#66D1F2]">
+              Email Us: lblaesthetics-uk@outlook.com
+            </a>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="mr-2 text-white/60">Follow us</span>
+            <a href="#" aria-label="TikTok" className="flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white">
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69A4.83 4.83 0 0 0 15.14 2h-3.1v12.4a2.55 2.55 0 1 1-1.84-2.47V8.8a5.9 5.9 0 1 0 5.1 5.86V8.7a7.9 7.9 0 0 0 4.29 1.28V6.88a4.84 4.84 0 0 1-3.1-.19Z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" className="flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white">
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" className="flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white">
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a24 24 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8h3.1Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className={`site-header sticky top-0 left-0 right-0 z-50 ${scrolled ? 'scrolled' : ''}`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3" aria-label="LBL Aesthetics home">
           <img
             src="/logo.avif"
             alt="LBL Aesthetics & Laser"
             width={120}
             height={40}
-            className="h-10 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </Link>
 
@@ -76,6 +126,45 @@ export default function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#01A0E2] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
+
+          <div
+            className={`mega-menu-wrapper ${academyMenuOpen ? 'is-open' : ''}`}
+            onMouseEnter={() => setAcademyMenuOpen(true)}
+            onMouseLeave={() => setAcademyMenuOpen(false)}
+          >
+            <Link
+              href="/copy-of-academy-1"
+              className="text-sm font-medium text-[#3D3D3D] hover:text-[#01A0E2] transition-colors duration-200 inline-flex items-center gap-1"
+              aria-expanded={academyMenuOpen}
+              aria-haspopup="true"
+            >
+              Academy
+              <ChevronDown className="w-3 h-3" />
+            </Link>
+            {academyMenuOpen && (
+              <div className="mega-menu-dropdown w-[900px]">
+                <div className="mb-4 pb-3 border-b border-[#F0EDE8]">
+                  <span className="text-xs font-semibold text-[#01A0E2] uppercase tracking-wider">Academy Courses</span>
+                  <p className="text-xs text-[#6B6B6B] mt-1">Professional qualifications and career pathways</p>
+                </div>
+                <div className="grid grid-cols-4 gap-1">
+                  {academyLinks.map((item) => (
+                    <Link
+                      key={item.title}
+                      href="#"
+                      onClick={(event) => event.preventDefault()}
+                      className="flex items-center gap-2 rounded-lg px-2 py-2 text-xs leading-relaxed text-[#3D3D3D] transition-colors hover:bg-[#01A0E2]/10 hover:text-[#01A0E2]"
+                    >
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#01A0E2]/10 text-[#01A0E2]">
+                        <item.icon className="h-3.5 w-3.5" />
+                      </span>
+                      <span>{item.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           <div
             className={`mega-menu-wrapper ${megaMenuOpen ? 'is-open' : ''}`}
@@ -93,15 +182,15 @@ export default function Header() {
             </Link>
             {megaMenuOpen && (
               <div
-                className="mega-menu-dropdown"
+className="mega-menu-dropdown w-[720px]"
                 onMouseEnter={() => setMegaMenuOpen(true)}
               >
               <div className="mb-4 pb-3 border-b border-[#F0EDE8]">
                 <span className="text-xs font-semibold text-[#01A0E2] uppercase tracking-wider">Treatments</span>
                 <p className="text-xs text-[#6B6B6B] mt-1">Advanced aesthetic treatments in Essex</p>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                {laserClinicSubPages.map((page) => (
+<div className="grid grid-cols-3 gap-3">
+                 {laserClinicSubPages.map((page) => (
                   <Link
                     key={page.title}
                     href={page.href}
@@ -163,6 +252,7 @@ export default function Header() {
             }`}
           />
         </button>
+        </div>
       </div>
 
       <div
@@ -189,6 +279,37 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <div className="border-t border-[#E8E4DE] pt-4">
+            <button
+              type="button"
+              onClick={() => setAcademyMobileOpen((open) => !open)}
+              className="flex w-full items-center justify-between text-left text-base font-medium text-[#3D3D3D] transition-colors hover:text-[#01A0E2]"
+              aria-expanded={academyMobileOpen}
+            >
+              <span>Academy</span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${academyMobileOpen ? 'rotate-180 text-[#01A0E2]' : ''}`} />
+            </button>
+            {academyMobileOpen && (
+              <div className="mt-2 space-y-1">
+                {academyLinks.map((item) => (
+                  <Link
+                    key={item.title}
+                    href="#"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setMobileOpen(false);
+                    }}
+                    className="flex items-center gap-2 rounded-lg py-2 pl-2 text-xs leading-relaxed text-[#6B6B6B] transition-colors hover:bg-[#01A0E2]/10 hover:text-[#01A0E2]"
+                  >
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#01A0E2]/10 text-[#01A0E2]">
+                      <item.icon className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="border-t border-[#E8E4DE] pt-4 mt-2">
             <Link
               href="/services"

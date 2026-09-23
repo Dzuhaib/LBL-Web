@@ -105,13 +105,17 @@ body {
 
 /* Header transition */
 .site-header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .site-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 1px 18px rgba(0, 0, 0, 0.06);
 }
 
 /* Card hover lift */
@@ -254,7 +258,6 @@ html {
   top: 100%;
   left: 0;
   margin-top: 0;
-  width: 500px;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
