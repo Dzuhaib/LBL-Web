@@ -41,7 +41,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 rounded-full mb-6">
                   <span className="w-2 h-2 bg-[#01A0E2] rounded-full badge-pulse" />
                   <span className="text-xs font-semibold text-[#01A0E2] uppercase tracking-wider">
-                    August Deals Live
+                    September Deals Live
                   </span>
                 </div>
                 <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-[1.1] tracking-tight mb-6">
@@ -52,7 +52,7 @@ export default function Home() {
                 </p>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 rounded-lg mb-8">
                   <span className="text-sm font-medium text-[#01A0E2]">
-                    AUGUST DEALS LIVE | Your favourite treatments at exclusive prices. Secure your appointment today.
+                    SEPTEMBER DEALS LIVE | Your favourite treatments at exclusive prices. Secure your appointment today.
                   </span>
                 </div>
                 <Link
