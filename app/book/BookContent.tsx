@@ -470,7 +470,7 @@ export default function BookContent() {
               </p>
               <div className="mt-6 flex items-center justify-center gap-4">
                 <div className="w-16 h-[2px] bg-gradient-to-r from-[#01A0E2]/50 to-transparent" />
-                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#01A0E2]">{categories.reduce((acc, c) => acc + c.services.length, 0)} services available</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#01A0E2]">{categories.reduce((acc, c) => acc + c.services.filter((s) => s.price).length, 0)} services available</span>
                 <div className="w-16 h-[2px] bg-gradient-to-l from-[#01A0E2]/50 to-transparent" />
               </div>
             </div>
@@ -497,7 +497,7 @@ export default function BookContent() {
                       </div>
                       <div>
                         <span className="font-heading font-semibold text-[#1A1A1A] group-hover:text-[#01A0E2] transition-colors duration-200">{cat.name}</span>
-                        <span className="ml-3 text-xs font-medium text-[#6B6B6B] bg-[#F0EDE8] px-2.5 py-0.5 rounded-full">{cat.services.length} services</span>
+                        <span className="ml-3 text-xs font-medium text-[#6B6B6B] bg-[#F0EDE8] px-2.5 py-0.5 rounded-full">{cat.services.filter((s) => s.price).length} services</span>
                       </div>
                     </div>
                     <svg
@@ -512,31 +512,34 @@ export default function BookContent() {
                   </button>
                   {expandedCategory === cat.name && (
                     <div className="border-t border-[#E8E4DE] px-6 pb-5 space-y-2.5">
-                      {cat.services.map((service) => {
+                      {cat.services.filter((s) => s.price).map((service) => {
                         const isChecked = selectedServices.has(service.id);
                         const isBookable = service.bookable !== false;
                         return (
                           <div
                             key={service.id}
-                            className={`flex items-start gap-4 rounded-xl p-4 cursor-pointer transition-all duration-200 border ${
+                            className={`group/service relative flex items-start gap-4 rounded-xl p-4 cursor-pointer transition-all duration-300 border ${
                               !isBookable
                                 ? 'opacity-50 cursor-not-allowed bg-[#FAF9F7] border-[#E8E4DE]'
                                 : isChecked
-                                  ? 'border-[#01A0E2] bg-gradient-to-r from-[#01A0E2]/5 to-white shadow-[0_2px_10px_rgba(1,160,226,0.08)]'
-                                  : 'border-[#E8E4DE] bg-white hover:border-[#01A0E2]/40 hover:bg-[#FAF9F7] hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
+                                  ? 'border-[#01A0E2] bg-gradient-to-r from-[#01A0E2]/5 via-white to-transparent shadow-[0_4px_20px_rgba(1,160,226,0.1)]'
+                                  : 'border-[#E8E4DE] bg-white hover:border-[#01A0E2]/40 hover:bg-gradient-to-r hover:from-[#FAF9F7] hover:to-white hover:shadow-[0_4px_15px_rgba(0,0,0,0.05)]'
                             }`}
                             onClick={() => { if (isBookable) toggleService(service.id); }}
                           >
-                            <div className={`mt-0.5 w-5 h-5 rounded-md border-2 cursor-pointer flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+                            {!isBookable && (
+                              <div className="absolute inset-0 bg-gradient-to-r from-red-50/30 to-transparent rounded-xl pointer-events-none" />
+                            )}
+                            <div className={`relative mt-0.5 w-6 h-6 rounded-lg border-2 cursor-pointer flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
                               isChecked
-                                ? 'bg-[#01A0E2] border-[#01A0E2] shadow-[0_2px_8px_rgba(1,160,226,0.3)]'
-                                : 'border-[#D4D0C8] bg-white hover:border-[#01A0E2]'
+                                ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] border-[#01A0E2] shadow-[0_4px_12px_rgba(1,160,226,0.35)]'
+                                : 'border-[#D4D0C8] bg-white hover:border-[#01A0E2] hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]'
                             }`}>
                               {isChecked && (
-                                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                               )}
                             </div>
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0 relative">
                               <div className="flex items-center gap-2">
                                 <span className={`font-semibold text-sm truncate ${isChecked ? 'text-[#01A0E2]' : 'text-[#1A1A1A]'}`}>
                                   {service.name}
@@ -562,7 +565,7 @@ export default function BookContent() {
             <button
               onClick={handleContinue}
               disabled={selectedServices.size === 0}
-              className="fixed bottom-0 left-0 right-0 z-40 bg-[#01A0E2]/50 backdrop-blur-2xl backdrop-saturate-150 text-white font-semibold py-4 px-6 text-center hover:bg-[#01A0E2] transition-all duration-300 shadow-[0_-4px_20px_rgba(1,160,226,0.3)] disabled:cursor-not-allowed disabled:opacity-100"
+              className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[#01A0E2] to-[#008bc7] backdrop-blur-2xl backdrop-saturate-150 text-white font-semibold py-4 px-6 text-center hover:shadow-[0_-4px_30px_rgba(1,160,226,0.5)] transition-all duration-300 shadow-[0_-4px_20px_rgba(1,160,226,0.3)] disabled:cursor-not-allowed disabled:opacity-80 disabled:from-[#01A0E2]/50 disabled:to-[#008bc7]/50"
             >
               <span className="flex items-center justify-center gap-2">
                 <span>{selectedServices.size} selected</span>
