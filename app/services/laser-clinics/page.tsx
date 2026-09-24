@@ -53,8 +53,6 @@ const reasons = [
   },
 ];
 
-const consultationHref = 'https://lblaestheticsuk.book.app/';
-
 export default function LaserClinicsPage() {
   return (
     <div className="min-h-screen bg-[#FAF9F7]">
@@ -70,7 +68,7 @@ export default function LaserClinicsPage() {
                 Welcome to LBL Aesthetics, one of Essex&apos;s most trusted skin and laser clinics, proudly based in the heart of Chelmsford. With over 15 years of hands-on experience in advanced laser treatments, our expert team delivers safe, effective, and genuinely life-changing results for every client who walks through our doors.
               </p>
               <Link
-                href={consultationHref}
+                href="/book"
                 className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]"
               >
                 Book your consultation
@@ -96,7 +94,7 @@ export default function LaserClinicsPage() {
               <p className="mt-5 leading-relaxed text-[#3D3D3D]">
                 At LBL, we have built our laser clinic around one simple belief: every client deserves outstanding care, visible results, and complete confidence in the people treating them. From the moment you reach out to us, your safety, comfort, and satisfaction are the guiding principles behind every decision we make and every treatment we deliver.
               </p>
-              <Link href={consultationHref} className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">
+              <Link href="/book" className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">
                 Book a treatment
               </Link>
             </div>
@@ -118,7 +116,7 @@ export default function LaserClinicsPage() {
                 <p className="mt-5 leading-relaxed text-[#3D3D3D]">
                   Every treatment at LBL is carried out using medical-grade laser and light-based equipment, chosen for its proven safety record and clinical results. Our team stays up to date with the latest advances in laser technology and technique, so your treatment plan is built around your skin, not a generic protocol.
                 </p>
-                <Link href={consultationHref} className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">
+                <Link href="/book" className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">
                   Book a treatment
                 </Link>
               </div>
@@ -169,7 +167,7 @@ export default function LaserClinicsPage() {
             </div>
             <p className="mx-auto mt-12 max-w-3xl text-center text-lg leading-relaxed text-[#3D3D3D]">Whether you are searching for a trusted laser clinic, a specialist skin laser clinic, or simply the best laser clinic Chelmsford has to offer, LBL Aesthetics is ready to welcome you.</p>
             <div className="mt-8 text-center">
-              <Link href={consultationHref} className="inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">Book a treatment</Link>
+              <Link href="/book" className="inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">Book a treatment</Link>
             </div>
           </div>
         </section>
@@ -181,7 +179,7 @@ export default function LaserClinicsPage() {
               <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-[#1A1A1A] md:text-4xl">What we offer at our laser clinic</h2>
               <p className="mt-6 leading-relaxed text-[#3D3D3D]">At LBL Laser Clinic in Chelmsford, we provide a comprehensive and carefully curated range of advanced laser and skin treatments, all designed to deliver real, lasting results in a safe and professional environment. Whether you are visiting us for the first time or returning as a long-standing client, you will always receive the same exceptional standard of care and clinical expertise.</p>
               <p className="mt-5 leading-relaxed text-[#3D3D3D]">Our skin and laser clinic specialises in treatments that harness the power of advanced laser and light-based technology to address concerns that go far deeper than the surface. Every piece of equipment has been chosen for its proven clinical effectiveness, safety profile, and ability to deliver consistently high-quality results. We do not follow trends; we invest in what genuinely works.</p>
-              <Link href={consultationHref} className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">Book a treatment</Link>
+              <Link href="/book" className="mt-8 inline-flex items-center rounded-full bg-[#01A0E2] px-8 py-4 font-semibold text-white shadow-[0_8px_18px_rgba(1,160,226,0.18)] transition-colors hover:bg-[#008bc7]">Book a treatment</Link>
             </div>
             <div className="order-1 overflow-hidden rounded-3xl shadow-[0_12px_30px_rgba(26,26,26,0.10)] lg:order-2">
               <img src="/services/laser.avif" alt="Advanced laser clinic equipment at LBL Aesthetics" width={800} height={600} className="h-full w-full object-cover" />

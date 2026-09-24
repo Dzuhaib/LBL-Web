@@ -56,7 +56,7 @@ export default function Home() {
                   </span>
                 </div>
                 <Link
-                  href="https://lblaestheticsuk.book.app/"
+                  href="/book"
                   className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)] text-base"
                 >
                   Book your consultation
@@ -216,7 +216,7 @@ export default function Home() {
                   continues to set the standard for excellence.
                 </p>
                 <Link
-                  href="https://lblaestheticsuk.book.app/"
+                  href="/book"
                   className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
                 >
                   Book your consultation
@@ -274,7 +274,7 @@ export default function Home() {
                   We believe aesthetic treatments should help you look refreshed, confident, and naturally enhanced, not over-treated.
                 </p>
                 <Link
-                  href="https://lblaestheticsuk.book.app/"
+                  href="/book"
                   className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
                 >
                   Book your consultation

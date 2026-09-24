@@ -65,7 +65,7 @@ export default function Header() {
     { label: 'Prices', href: '/prices' },
     { label: 'Client Reviews', href: '/reviews' },
     { label: 'T&Cs', href: '/terms' },
-    { label: 'My Bookings', href: '/my-bookings' },
+    { label: 'Book Now', href: '/book' },
     { label: 'My Subscriptions', href: '/subscriptions' },
   ];
 
@@ -244,7 +244,7 @@ className="mega-menu-dropdown w-[720px]"
 
         <div className="hidden md:block">
           <Link
-            href="https://lblaestheticsuk.book.app/"
+            href="/book"
             className="inline-flex items-center px-6 py-2.5 bg-[#01A0E2] text-white text-sm font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-sm"
           >
             Book your consultation
@@ -370,7 +370,7 @@ className="mega-menu-dropdown w-[720px]"
             </Link>
           ))}
           <Link
-            href="https://lblaestheticsuk.book.app/"
+            href="/book"
             onClick={() => setMobileOpen(false)}
             className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors"
           >

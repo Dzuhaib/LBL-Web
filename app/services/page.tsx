@@ -23,22 +23,6 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-[#FAF9F7]">
       <main>
-        <section className="pt-20 md:pt-28">
-          <div className="mx-auto max-w-7xl px-6">
-            <Link href="/services/laser-clinics" className="group grid overflow-hidden rounded-3xl bg-white shadow-[0_4px_14px_rgba(26,26,26,0.06)] transition-transform duration-200 hover:-translate-y-1 lg:grid-cols-[0.8fr_1.2fr]">
-              <div className="min-h-56 overflow-hidden">
-                <img src="/services/laser.avif" alt="Laser Clinics at LBL Aesthetics in Essex" width={800} height={600} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
-              </div>
-              <div className="flex flex-col justify-center p-8 md:p-12">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01A0E2]">Laser Clinics</span>
-                <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#1A1A1A] md:text-4xl">Advanced laser treatments in Essex</h2>
-                <p className="mt-4 leading-relaxed text-[#6B6B6B]">Explore our trusted Chelmsford laser clinic and discover safe, personalised treatments designed around your skin.</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#01A0E2]">Explore Laser Clinics <span className="transition-transform duration-200 group-hover:translate-x-1">→</span></span>
-              </div>
-            </Link>
-          </div>
-        </section>
-
         <section className="py-20 md:py-28" id="treatments">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-14">
@@ -95,7 +79,7 @@ export default function Services() {
               treatment plan around your goals.
             </p>
             <Link
-              href="https://lblaestheticsuk.book.app/"
+              href="/book"
               className="inline-flex items-center px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)]"
             >
               Book Your Consultation
