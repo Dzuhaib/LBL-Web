@@ -666,11 +666,12 @@ export default function BookContent() {
         )}
 
         {toast && (
-          <div className="fixed top-6 right-6 z-[60] bg-[#1A1A1A] text-white px-6 py-5 rounded shadow-lg flex items-center gap-4">
-            <svg className="w-5 h-5 text-[#01A0E2]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <div className="fixed top-6 right-6 z-[60] bg-[#1A1A1A] text-white px-6 py-5 rounded shadow-lg flex items-center gap-4 max-w-sm">
+            <svg className="w-5 h-5 text-[#01A0E2] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <div>
-              <p className="font-semibold text-sm">Your reservation has been booked!</p>
-              <p className="text-xs text-[#6B6B6B]">We will be in touch shortly.</p>
+              <p className="font-semibold text-sm">Your appointment has been booked!</p>
+              <p className="text-xs text-[#6B6B6B] mt-1">For further details, reach out to us at:</p>
+              <p className="text-xs text-[#01A0E2] font-medium mt-0.5">lblaesthetics-uk@outlook.com</p>
             </div>
           </div>
         )}
