@@ -196,7 +196,21 @@ className="mega-menu-dropdown w-[720px]"
                 <span className="text-xs font-semibold text-[#01A0E2] uppercase tracking-wider">Treatments</span>
                 <p className="text-xs text-[#6B6B6B] mt-1">Advanced aesthetic treatments in Essex</p>
               </div>
-<div className="grid grid-cols-3 gap-3">
+              <Link href="/services/laser-clinics" className="mb-4 flex items-center justify-between rounded-xl border border-[#01A0E2]/20 bg-[#01A0E2]/5 p-3 transition-colors hover:bg-[#01A0E2]/10">
+                <span className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#01A0E2] text-white">
+                    <Sparkles className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold text-[#1A1A1A]">Laser Clinics</span>
+                    <span className="text-xs text-[#6B6B6B]">Explore our laser clinic in Essex</span>
+                  </span>
+                </span>
+                <svg className="h-4 w-4 text-[#01A0E2]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
+              </Link>
+              <div className="grid grid-cols-3 gap-3">
                  {laserClinicSubPages.map((page) => (
                   <Link
                     key={page.title}
