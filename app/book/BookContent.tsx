@@ -482,22 +482,22 @@ export default function BookContent() {
           <div className="mx-auto max-w-7xl px-6 relative">
             <div className="space-y-3 pb-24">
               {categories.map((cat) => (
-                <div key={cat.name} className="border border-[#E8E4DE] rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group">
+                <div key={cat.name} className="border border-[#E8E4DE] rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 group relative">
                   <button
                     onClick={() => setExpandedCategory(expandedCategory === cat.name ? null : cat.name)}
-                    className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                    className="w-full flex items-center justify-between px-6 py-5 text-left group relative"
                   >
                     <div className="flex items-center gap-4">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold transition-all duration-300 ${
                         expandedCategory === cat.name
-                          ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] text-white shadow-[0_4px_15px_rgba(1,160,226,0.3)]'
-                          : 'bg-[#F0EDE8] text-[#01A0E2] group-hover:bg-[#01A0E2]/10'
+                          ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] text-white shadow-[0_4px_20px_rgba(1,160,226,0.35)]'
+                          : 'bg-gradient-to-br from-[#F0EDE8] to-white text-[#01A0E2] group-hover:from-[#01A0E2]/10 group-hover:to-[#01A0E2]/5 group-hover:shadow-[0_2px_10px_rgba(1,160,226,0.15)]'
                       }`}>
                         {cat.letter}
                       </div>
                       <div>
-                        <span className="font-heading font-semibold text-[#1A1A1A] group-hover:text-[#01A0E2] transition-colors duration-200">{cat.name}</span>
-                        <span className="ml-3 text-xs font-medium text-[#6B6B6B] bg-[#F0EDE8] px-2.5 py-0.5 rounded-full">{cat.services.filter((s) => s.price).length} services</span>
+                        <span className="font-heading font-semibold text-[#1A1A1A] group-hover:text-[#01A0E2] transition-colors duration-300">{cat.name}</span>
+                        <span className="ml-3 text-xs font-semibold text-[#6B6B6B] bg-[#F0EDE8] px-2.5 py-0.5 rounded-full">{cat.services.filter((s) => s.price).length} services</span>
                       </div>
                     </div>
                     <svg
@@ -511,46 +511,47 @@ export default function BookContent() {
                     </svg>
                   </button>
                   {expandedCategory === cat.name && (
-                    <div className="border-t border-[#E8E4DE] px-6 pb-5 space-y-2.5">
+                    <div className="border-t border-[#E8E4DE] px-6 pt-2 pb-6 space-y-3 bg-gradient-to-b from-[#FAF9F7]/50 to-white relative">
+                      <div className="absolute -top-px left-6 right-6 h-[3px] bg-gradient-to-r from-[#01A0E2]/50 via-[#01A0E2]/20 to-transparent" />
                       {cat.services.filter((s) => s.price).map((service) => {
                         const isChecked = selectedServices.has(service.id);
                         const isBookable = service.bookable !== false;
                         return (
                           <div
                             key={service.id}
-                            className={`group/service relative flex items-start gap-4 rounded-xl p-4 cursor-pointer transition-all duration-300 border ${
+                            className={`group/service relative flex items-start gap-5 rounded-2xl p-5 cursor-pointer transition-all duration-300 border ${
                               !isBookable
                                 ? 'opacity-50 cursor-not-allowed bg-[#FAF9F7] border-[#E8E4DE]'
                                 : isChecked
-                                  ? 'border-[#01A0E2] bg-gradient-to-r from-[#01A0E2]/5 via-white to-transparent shadow-[0_4px_20px_rgba(1,160,226,0.1)]'
-                                  : 'border-[#E8E4DE] bg-white hover:border-[#01A0E2]/40 hover:bg-gradient-to-r hover:from-[#FAF9F7] hover:to-white hover:shadow-[0_4px_15px_rgba(0,0,0,0.05)]'
+                                  ? 'border-[#01A0E2] bg-gradient-to-br from-[#01A0E2]/8 via-white to-transparent shadow-[0_6px_25px_rgba(1,160,226,0.12)]'
+                                  : 'border-[#E8E4DE] bg-white hover:border-[#01A0E2]/40 hover:bg-gradient-to-br hover:from-[#FAF9F7] hover:to-white hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]'
                             }`}
                             onClick={() => { if (isBookable) toggleService(service.id); }}
                           >
                             {!isBookable && (
-                              <div className="absolute inset-0 bg-gradient-to-r from-red-50/30 to-transparent rounded-xl pointer-events-none" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-red-50/20 to-transparent rounded-2xl pointer-events-none" />
                             )}
-                            <div className={`relative mt-0.5 w-6 h-6 rounded-lg border-2 cursor-pointer flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
+                            <div className={`relative mt-0.5 w-7 h-7 rounded-xl border-2 cursor-pointer flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
                               isChecked
-                                ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] border-[#01A0E2] shadow-[0_4px_12px_rgba(1,160,226,0.35)]'
-                                : 'border-[#D4D0C8] bg-white hover:border-[#01A0E2] hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]'
+                                ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] border-[#01A0E2] shadow-[0_4px_15px_rgba(1,160,226,0.4)]'
+                                : 'border-[#D4D0C8] bg-white hover:border-[#01A0E2] hover:shadow-[0_3px_10px_rgba(0,0,0,0.1)]'
                             }`}>
                               {isChecked && (
-                                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                               )}
                             </div>
                             <div className="flex-1 min-w-0 relative">
-                              <div className="flex items-center gap-2">
-                                <span className={`font-semibold text-sm truncate ${isChecked ? 'text-[#01A0E2]' : 'text-[#1A1A1A]'}`}>
+                              <div className="flex items-center gap-3">
+                                <span className={`font-semibold text-[15px] truncate ${isChecked ? 'text-[#01A0E2]' : 'text-[#1A1A1A]'}`}>
                                   {service.name}
                                 </span>
                                 {!isBookable && (
-                                  <span className="text-[10px] font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full flex-shrink-0" title="You can come to the clinic to book this service">Not bookable online</span>
+                                  <span className="text-[11px] font-semibold text-red-500 bg-red-50 px-2.5 py-1 rounded-full flex-shrink-0" title="You can come to the clinic to book this service">Not bookable online</span>
                                 )}
                               </div>
-                              <div className="mt-1.5 flex items-center gap-2 flex-wrap">
-                                {service.duration && <span className="text-[11px] font-semibold text-[#01A0E2] bg-[#01A0E2]/10 px-2 py-0.5 rounded-full">{service.duration}</span>}
-                                {service.price && <span className="text-[11px] font-bold text-[#1A1A1A]">{service.price}</span>}
+                              <div className="mt-2 flex items-center gap-2.5 flex-wrap">
+                                {service.duration && <span className="text-[12px] font-semibold text-[#01A0E2] bg-[#01A0E2]/10 px-2.5 py-1 rounded-full">{service.duration}</span>}
+                                {service.price && <span className="text-[12px] font-bold text-[#1A1A1A] bg-[#F0EDE8] px-2.5 py-1 rounded-full">{service.price}</span>}
                               </div>
                             </div>
                           </div>
