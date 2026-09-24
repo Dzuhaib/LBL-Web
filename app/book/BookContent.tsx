@@ -453,32 +453,55 @@ export default function BookContent() {
   return (
     <div className="min-h-screen bg-[#FAF9F7]">
       <main>
-        <section className="pt-16 md:pt-24 pb-12">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="text-center mb-10">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01A0E2]">Book Your Appointment</span>
-              <h1 className="mt-4 font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#1A1A1A]">Choose a Service</h1>
-              <p className="mt-4 text-base leading-relaxed text-[#6B6B6B] max-w-xl mx-auto">Select the services you need and continue booking.</p>
+        <section className="relative pt-16 md:pt-24 pb-12 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#01A0E2]/[0.03] via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#01A0E2]/[0.04] rounded-full blur-[100px] pointer-events-none" />
+          <div className="mx-auto max-w-7xl px-6 relative">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#01A0E2]/10 rounded-full mb-5">
+                <span className="w-2 h-2 rounded-full bg-[#01A0E2] animate-pulse" />
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01A0E2]">Book Your Appointment</span>
+              </div>
+              <h1 className="mt-3 font-heading text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A1A1A]">
+                Choose Your <span className="text-[#01A0E2]">Service</span>
+              </h1>
+              <p className="mt-4 text-base leading-relaxed text-[#6B6B6B] max-w-xl mx-auto text-lg">
+                Select from our premium range of aesthetic treatments and continue booking.
+              </p>
+              <div className="mt-6 flex items-center justify-center gap-4">
+                <div className="w-16 h-[2px] bg-gradient-to-r from-[#01A0E2]/50 to-transparent" />
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#01A0E2]">{categories.reduce((acc, c) => acc + c.services.length, 0)} services available</span>
+                <div className="w-16 h-[2px] bg-gradient-to-l from-[#01A0E2]/50 to-transparent" />
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="pb-28">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="space-y-2 pb-24">
+        <section className="pb-28 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF9F7] to-[#FAF9F7] pointer-events-none" />
+          <div className="mx-auto max-w-7xl px-6 relative">
+            <div className="space-y-3 pb-24">
               {categories.map((cat) => (
-                <div key={cat.name} className="border border-[#E8E4DE] rounded-xl overflow-hidden bg-white">
+                <div key={cat.name} className="border border-[#E8E4DE] rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group">
                   <button
                     onClick={() => setExpandedCategory(expandedCategory === cat.name ? null : cat.name)}
-                    className="w-full flex items-center justify-between px-5 py-4 text-left"
+                    className="w-full flex items-center justify-between px-6 py-5 text-left group"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-[#01A0E2]">{cat.letter}</span>
-                      <span className="font-heading font-semibold text-[#1A1A1A]">{cat.name}</span>
-                      <span className="text-xs text-[#6B6B6B] bg-[#F0EDE8] px-2 py-0.5 rounded-full">{cat.services.length} services</span>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold transition-all duration-300 ${
+                        expandedCategory === cat.name
+                          ? 'bg-gradient-to-br from-[#01A0E2] to-[#008bc7] text-white shadow-[0_4px_15px_rgba(1,160,226,0.3)]'
+                          : 'bg-[#F0EDE8] text-[#01A0E2] group-hover:bg-[#01A0E2]/10'
+                      }`}>
+                        {cat.letter}
+                      </div>
+                      <div>
+                        <span className="font-heading font-semibold text-[#1A1A1A] group-hover:text-[#01A0E2] transition-colors duration-200">{cat.name}</span>
+                        <span className="ml-3 text-xs font-medium text-[#6B6B6B] bg-[#F0EDE8] px-2.5 py-0.5 rounded-full">{cat.services.length} services</span>
+                      </div>
                     </div>
                     <svg
-                      className={`w-5 h-5 text-[#6B6B6B] transition-transform duration-300 ${expandedCategory === cat.name ? 'rotate-180' : ''}`}
+                      className={`w-5 h-5 text-[#6B6B6B] transition-all duration-300 ${expandedCategory === cat.name ? 'rotate-180 text-[#01A0E2]' : ''}`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -488,35 +511,43 @@ export default function BookContent() {
                     </svg>
                   </button>
                   {expandedCategory === cat.name && (
-                    <div className="border-t border-[#E8E4DE] px-5 pb-4 space-y-2">
+                    <div className="border-t border-[#E8E4DE] px-6 pb-5 space-y-2.5">
                       {cat.services.map((service) => {
                         const isChecked = selectedServices.has(service.id);
                         const isBookable = service.bookable !== false;
                         return (
                           <div
                             key={service.id}
-                            className={`flex items-start gap-3 rounded-lg p-3 cursor-pointer transition-all duration-200 border ${
-                              !isBookable ? 'opacity-60 cursor-not-allowed' : isChecked
-                                ? 'border-[#01A0E2] bg-[#01A0E2]/5'
-                                : 'border-[#E8E4DE] bg-[#FAF9F7] hover:border-[#01A0E2]/50 hover:bg-[#F0EDE8]'
+                            className={`flex items-start gap-4 rounded-xl p-4 cursor-pointer transition-all duration-200 border ${
+                              !isBookable
+                                ? 'opacity-50 cursor-not-allowed bg-[#FAF9F7] border-[#E8E4DE]'
+                                : isChecked
+                                  ? 'border-[#01A0E2] bg-gradient-to-r from-[#01A0E2]/5 to-white shadow-[0_2px_10px_rgba(1,160,226,0.08)]'
+                                  : 'border-[#E8E4DE] bg-white hover:border-[#01A0E2]/40 hover:bg-[#FAF9F7] hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
                             }`}
                             onClick={() => { if (isBookable) toggleService(service.id); }}
                           >
-                            <div className="mt-1 w-5 h-5 rounded border-2 cursor-pointer flex items-center justify-center" style={{ borderColor: isChecked ? '#01A0E2' : '#E8E4DE', backgroundColor: isChecked ? '#01A0E2' : 'transparent' }}>
-                              {isChecked && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                            <div className={`mt-0.5 w-5 h-5 rounded-md border-2 cursor-pointer flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+                              isChecked
+                                ? 'bg-[#01A0E2] border-[#01A0E2] shadow-[0_2px_8px_rgba(1,160,226,0.3)]'
+                                : 'border-[#D4D0C8] bg-white hover:border-[#01A0E2]'
+                            }`}>
+                              {isChecked && (
+                                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                              )}
                             </div>
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between gap-2">
-                                <span className={`font-semibold text-sm ${isChecked ? 'text-[#01A0E2]' : 'text-[#1A1A1A]'}`}>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className={`font-semibold text-sm truncate ${isChecked ? 'text-[#01A0E2]' : 'text-[#1A1A1A]'}`}>
                                   {service.name}
                                 </span>
                                 {!isBookable && (
-                                  <span className="text-xs font-medium text-red-500 bg-red-50 px-2 py-0.5 rounded-full cursor-help" title="You can come to the clinic to book this service">Not bookable online</span>
+                                  <span className="text-[10px] font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full flex-shrink-0" title="You can come to the clinic to book this service">Not bookable online</span>
                                 )}
                               </div>
-                              <div className="mt-1 flex items-center gap-2 flex-wrap">
-                                {service.duration && <span className="text-xs font-medium text-[#01A0E2] bg-[#01A0E2]/10 px-2 py-0.5 rounded-full">{service.duration}</span>}
-                                {service.price && <span className="text-xs font-bold text-[#1A1A1A]">{service.price}</span>}
+                              <div className="mt-1.5 flex items-center gap-2 flex-wrap">
+                                {service.duration && <span className="text-[11px] font-semibold text-[#01A0E2] bg-[#01A0E2]/10 px-2 py-0.5 rounded-full">{service.duration}</span>}
+                                {service.price && <span className="text-[11px] font-bold text-[#1A1A1A]">{service.price}</span>}
                               </div>
                             </div>
                           </div>
@@ -531,136 +562,200 @@ export default function BookContent() {
             <button
               onClick={handleContinue}
               disabled={selectedServices.size === 0}
-              className="fixed bottom-0 left-0 right-0 z-40 bg-[#01A0E2] text-white font-semibold py-4 px-6 text-center hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_-4px_20px_rgba(1,160,226,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="fixed bottom-0 left-0 right-0 z-40 bg-[#01A0E2]/50 backdrop-blur-2xl backdrop-saturate-150 text-white font-semibold py-4 px-6 text-center hover:bg-[#01A0E2] transition-all duration-300 shadow-[0_-4px_20px_rgba(1,160,226,0.3)] disabled:cursor-not-allowed disabled:opacity-100"
             >
-              Continue Booking ({selectedServices.size} selected) — £{totalPrice.toFixed(2)}
+              <span className="flex items-center justify-center gap-2">
+                <span>{selectedServices.size} selected</span>
+                <span className="text-[#01A0E2] font-bold">£{totalPrice.toFixed(2)}</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </span>
             </button>
           </div>
         </section>
 
         {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
-              {modalStep === 'summary' && (
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="font-heading text-2xl font-bold text-[#1A1A1A]">Your Selection</h2>
-                    <button onClick={() => setShowModal(false)} className="text-[#6B6B6B] hover:text-[#1A1A1A]">
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+            <div className="bg-white rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.25)] max-w-lg w-full max-h-[90vh] overflow-y-auto overflow-x-hidden">
+              <div className="bg-gradient-to-r from-[#01A0E2] to-[#008bc7] px-8 py-6 rounded-t-3xl">
+                <div className="flex items-center justify-between">
+                  <div>
+                    {modalStep === 'summary' && (
+                      <>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Step 1 of 2</p>
+                        <h2 className="font-heading text-2xl font-bold text-white mt-1">Your Selection</h2>
+                      </>
+                    )}
+                    {modalStep === 'form' && (
+                      <>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Step 2 of 2</p>
+                        <h2 className="font-heading text-2xl font-bold text-white mt-1">Booking Details</h2>
+                      </>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1.5">
+                      <div className={`w-2.5 h-2.5 rounded-full ${modalStep === 'summary' ? 'bg-white' : 'bg-white/30'}`} />
+                      <div className={`w-2.5 h-2.5 rounded-full ${modalStep === 'form' ? 'bg-white' : 'bg-white/30'}`} />
+                    </div>
+                    <button onClick={() => { setShowModal(false); setModalStep('summary'); }} className="text-white/70 hover:text-white transition-colors ml-4" aria-label="Close">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                   </div>
+                </div>
+                {modalStep === 'summary' && (
+                  <div className="mt-4 w-full bg-white/20 rounded-full h-1">
+                    <div className="bg-white h-1 rounded-full transition-all duration-500" style={{ width: '50%' }} />
+                  </div>
+                )}
+                {modalStep === 'form' && (
+                  <div className="mt-4 w-full bg-white/20 rounded-full h-1">
+                    <div className="bg-white h-1 rounded-full transition-all duration-500" style={{ width: '100%' }} />
+                  </div>
+                )}
+              </div>
 
-                  <div className="space-y-3 mb-6 max-h-[50vh] overflow-y-auto pr-2">
-                    {selectedServiceData.map((service) => (
-                      <div key={service.id} className="flex items-start justify-between p-3 bg-[#FAF9F7] rounded-lg border border-[#E8E4DE]">
-                        <div className="flex-1">
-                          <span className="font-semibold text-sm text-[#1A1A1A]">{service.name}</span>
-                          {service.duration && <span className="ml-2 text-xs text-[#6B6B6B]">{service.duration}</span>}
-                          {service.description && <p className="mt-1 text-xs leading-relaxed text-[#6B6B6B]">{service.description}</p>}
+              <div className="p-8">
+                {modalStep === 'summary' && (
+                  <>
+                    <div className="space-y-3 mb-6 max-h-[45vh] overflow-y-auto pr-1">
+                      {selectedServiceData.length === 0 && (
+                        <div className="text-center py-8">
+                          <svg className="w-12 h-12 mx-auto text-[#E8E4DE] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                          <p className="text-[#6B6B6B] text-sm">No services selected yet</p>
                         </div>
-                        <div className="flex items-center gap-3 flex-shrink-0 ml-3">
-                          {service.price && <span className="text-sm font-bold text-[#1A1A1A]">{service.price}</span>}
-                          <button onClick={() => removeService(service.id)} className="text-[#6B6B6B] hover:text-red-500 transition-colors" aria-label="Remove">
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                          </button>
+                      )}
+                      {selectedServiceData.map((service) => (
+                        <div key={service.id} className="flex items-start justify-between p-4 bg-gradient-to-r from-[#FAF9F7] to-white rounded-xl border border-[#E8E4DE] hover:border-[#01A0E2]/30 transition-all duration-200">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#01A0E2]" />
+                              <span className="font-semibold text-sm text-[#1A1A1A]">{service.name}</span>
+                            </div>
+                            {service.duration && <span className="ml-3.5 text-xs font-medium text-[#01A0E2] bg-[#01A0E2]/10 px-2 py-0.5 rounded-full inline-block mt-1">{service.duration}</span>}
+                            {service.description && <p className="mt-1.5 text-xs leading-relaxed text-[#6B6B6B] ml-3.5">{service.description}</p>}
+                          </div>
+                          <div className="flex items-center gap-3 flex-shrink-0 ml-3">
+                            {service.price && <span className="text-sm font-bold text-[#1A1A1A]">{service.price}</span>}
+                            <button onClick={() => removeService(service.id)} className="w-7 h-7 rounded-full flex items-center justify-center text-[#6B6B6B] hover:text-red-500 hover:bg-red-50 transition-all duration-200" aria-label="Remove">
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {selectedServiceData.length > 0 && (
+                      <>
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#01A0E2]/10 to-transparent rounded-xl" />
+                          <div className="relative border border-[#E8E4DE] rounded-xl p-5 bg-white">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <span className="text-xs font-semibold uppercase tracking-wider text-[#6B6B6B]">Total</span>
+                                <p className="font-heading text-3xl font-bold text-[#01A0E2] mt-0.5">£{totalPrice.toFixed(2)}</p>
+                              </div>
+                              <div className="text-right">
+                                <span className="text-xs text-[#6B6B6B]">{selectedServices.size} service{selectedServices.size > 1 ? 's' : ''}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => setModalStep('form')}
+                          className="w-full mt-5 inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#01A0E2] to-[#008bc7] text-white font-semibold rounded-full hover:shadow-[0_8px_25px_rgba(1,160,226,0.4)] transition-all duration-300 shadow-[0_4px_15px_rgba(1,160,226,0.2)] group cursor-pointer"
+                        >
+                          Continue to Booking
+                          <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+
+                        <button
+                          onClick={() => setShowModal(false)}
+                          className="w-full mt-3 text-center text-sm font-medium text-[#6B6B6B] hover:text-[#01A0E2] transition-colors py-2"
+                        >
+                          ← Back to services
+                        </button>
+                      </>
+                    )}
+                  </>
+                )}
+
+                {modalStep === 'form' && (
+                  <>
+                    <div className="space-y-4 border-t border-[#E8E4DE] pt-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Full Name</label>
+                          <input type="text" placeholder="Your full name" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200" />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Phone</label>
+                          <input type="tel" placeholder="07904284115" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200" />
                         </div>
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-[#E8E4DE] pt-4 mb-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-heading font-bold text-[#1A1A1A]">Total</span>
-                      <span className="text-2xl font-heading font-bold text-[#01A0E2]">£{totalPrice.toFixed(2)}</span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Email</label>
+                          <input type="email" placeholder="your@email.com" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200" />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Preferred Date</label>
+                          <input type="date" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200" />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Preferred Time</label>
+                          <select className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200 bg-white">
+                            <option value="">Select a time</option>
+                            {['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'].map((t) => (
+                              <option key={t} value={t}>{t}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Duration</label>
+                          <div className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] bg-[#FAF9F7]">
+                            {selectedServiceData.length > 0 ? `${selectedServiceData.reduce((acc, s) => acc + (parseInt(s.duration || '0') || 0), 0)} min total` : 'Select services'}
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1A] mb-1.5">Message <span className="text-[#6B6B6B] font-normal not-italic">(optional)</span></label>
+                        <textarea rows={3} placeholder="Any additional details or preferences..." className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-2 focus:ring-[#01A0E2]/20 transition-all duration-200 resize-none" />
+                      </div>
                     </div>
-                  </div>
 
-                  <button
-                    onClick={() => setModalStep('form')}
-                    className="w-full mt-6 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)] group cursor-pointer"
-                  >
-                    Next — Confirm Booking
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </button>
-
-                  <button
-                    onClick={() => setShowModal(false)}
-                    className="w-full mt-3 text-center text-sm font-semibold text-[#6B6B6B] hover:text-[#01A0E2] transition-colors"
-                  >
-                    ← Back to services
-                  </button>
-                </div>
-              )}
-
-              {modalStep === 'form' && (
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="font-heading text-2xl font-bold text-[#1A1A1A]">Booking Details</h2>
-                    <button onClick={() => setModalStep('summary')} className="text-[#6B6B6B] hover:text-[#01A0E2]">
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                    <button
+                      onClick={handleSubmit}
+                      className="w-full mt-5 inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#01A0E2] to-[#008bc7] text-white font-semibold rounded-full hover:shadow-[0_8px_25px_rgba(1,160,226,0.4)] transition-all duration-300 shadow-[0_4px_15px_rgba(1,160,226,0.2)] group cursor-pointer"
+                    >
+                      Confirm Reservation
+                      <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     </button>
-                  </div>
 
-                  <div className="space-y-4 border-t border-[#E8E4DE] pt-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Full Name</label>
-                      <input type="text" placeholder="Your full name" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors" />
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Phone</label>
-                        <input type="tel" placeholder="07904284115" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Email</label>
-                        <input type="email" placeholder="your@email.com" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors" />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Preferred Date</label>
-                        <input type="date" className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Preferred Time</label>
-                        <select className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors bg-white">
-                          <option value="">Select a time</option>
-                          {['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'].map((t) => (
-                            <option key={t} value={t}>{t}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#1A1A1A] mb-1">Message (optional)</label>
-                      <textarea rows={3} placeholder="Any additional details..." className="w-full rounded-xl border border-[#E8E4DE] px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:outline-none focus:border-[#01A0E2] focus:ring-1 focus:ring-[#01A0E2] transition-colors resize-none" />
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full mt-6 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#01A0E2] text-white font-semibold rounded-full hover:bg-[#008bc7] transition-colors duration-200 shadow-[0_8px_18px_rgba(1,160,226,0.18)] group cursor-pointer"
-                  >
-                    Submit Reservation
-                    <svg className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  </button>
-
-                  <button
-                    onClick={() => setShowModal(false)}
-                    className="w-full mt-3 text-center text-sm font-semibold text-[#6B6B6B] hover:text-[#01A0E2] transition-colors"
-                  >
-                    ← Back to services
-                  </button>
-                </div>
-              )}
+                    <button
+                      onClick={() => { setModalStep('summary'); }}
+                      className="w-full mt-3 text-center text-sm font-medium text-[#6B6B6B] hover:text-[#01A0E2] transition-colors py-2"
+                    >
+                      ← Back to selection
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         )}
 
         {toast && (
-          <div className="fixed top-6 right-6 z-[60] bg-[#01A0E2] text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-bounce">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <span className="font-semibold">Your reservation has been booked! We will be in touch shortly.</span>
+          <div className="fixed top-6 right-6 z-[60] bg-gradient-to-r from-[#01A0E2] to-[#008bc7] text-white px-6 py-4 rounded-xl shadow-[0_10px_30px_rgba(1,160,226,0.3)] flex items-center gap-3 animate-bounce">
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div>
+              <p className="font-semibold text-sm">Your reservation has been booked!</p>
+              <p className="text-xs text-white/70">We will be in touch shortly.</p>
+            </div>
           </div>
         )}
       </main>
